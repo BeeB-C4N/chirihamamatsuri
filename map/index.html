@@ -818,15 +818,19 @@ svg.leaflet-image-layer.leaflet-interactive path {
       align-items: center;
       justify-content: center;
       padding: 14px clamp(20px, 6vw, 34px);
-      border: 1px solid rgba(255, 255, 255, .09);
+      border: 1px solid rgba(112, 72, 34, .34);
       color: #fff;
       background:
-        linear-gradient(94deg, transparent 0 12%, rgba(255,255,255,.035) 13%, transparent 14% 68%, rgba(255,255,255,.025) 69%, transparent 70%),
-        linear-gradient(180deg, #171717, #0b0b0b);
+        linear-gradient(90deg, rgba(255,255,255,.26) 0 2%, transparent 2% 12%, rgba(145,97,51,.12) 12% 14%, transparent 14% 28%, rgba(255,255,255,.18) 28% 30%, transparent 30% 53%, rgba(145,97,51,.10) 53% 56%, transparent 56% 70%, rgba(255,255,255,.15) 70% 72%, transparent 72% 100%),
+        linear-gradient(180deg, #f4d29c 0%, #e9bd82 48%, #dda764 100%);
       font-family: var(--font-mincho) !important;
       line-height: 1;
       text-align: center;
-      box-shadow: 9px 9px 0 #c9974f, 0 18px 35px rgba(0, 0, 0, .5);
+      box-shadow:
+        10px 10px 0 #6c4527,
+        0 18px 35px rgba(47, 27, 12, .38),
+        inset 0 1px 0 rgba(255,255,255,.36),
+        inset 0 -2px 0 rgba(132, 84, 45, .22);
       opacity: 0;
       transform-origin: center;
       animation: plaqueSlam .75s .76s cubic-bezier(.13, .84, .25, 1.2) forwards;
@@ -842,29 +846,83 @@ svg.leaflet-image-layer.leaflet-interactive path {
     .splash-plaque::before {
       left: -6px;
       top: -6px;
-      border-left: 2px solid rgba(255, 255, 255, .86);
-      border-top: 2px solid rgba(255, 255, 255, .86);
+      border-left: 2px solid rgba(255, 249, 235, .9);
+      border-top: 2px solid rgba(255, 249, 235, .9);
     }
     .splash-plaque::after {
       right: -6px;
       bottom: -6px;
-      border-right: 2px solid #171717;
-      border-bottom: 2px solid #171717;
+      border-right: 2px solid rgba(115, 72, 38, .92);
+      border-bottom: 2px solid rgba(115, 72, 38, .92);
     }
     .splash-plaque span {
-      color: var(--firework-red-bright);
+      color: #c53224;
       font-size: clamp(1.35rem, 5vw, 2.25rem);
       font-weight: 800;
       letter-spacing: .08em;
-      text-shadow: 0 2px 3px rgba(0, 0, 0, .9), 0 0 12px rgba(199, 50, 39, .18);
+      text-shadow: 0 1px 0 rgba(255, 249, 240, .65), 0 2px 8px rgba(136, 29, 18, .16);
       white-space: nowrap;
     }
+    .splash-sparks {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 3;
+      width: clamp(300px, 78vw, 470px);
+      height: clamp(130px, 28vw, 180px);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .splash-sparks i {
+      position: absolute;
+      left: var(--x, 50%);
+      bottom: 18px;
+      width: var(--size, 8px);
+      height: var(--size, 8px);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 35%, rgba(255,255,255,.98) 0 18%, rgba(255,238,190,.95) 19% 48%, rgba(242,180,87,.75) 49% 72%, rgba(242,180,87,0) 73% 100%);
+      opacity: 0;
+      filter: drop-shadow(0 0 8px rgba(255, 221, 150, .75));
+      transform: translate(-50%, 0) scale(.35);
+      animation: sparkBurst .95s var(--delay, 1.1s) cubic-bezier(.16, .84, .24, 1) forwards;
+    }
+    .splash-sparks i:nth-child(1)  { --x: 18%; --dx: -54px; --dy: -28px; --size: 8px;  --delay: 1.06s; }
+    .splash-sparks i:nth-child(2)  { --x: 24%; --dx: -82px; --dy: -56px; --size: 12px; --delay: 1.08s; }
+    .splash-sparks i:nth-child(3)  { --x: 29%; --dx: -48px; --dy: -78px; --size: 7px;  --delay: 1.10s; }
+    .splash-sparks i:nth-child(4)  { --x: 36%; --dx: -32px; --dy: -42px; --size: 10px; --delay: 1.07s; }
+    .splash-sparks i:nth-child(5)  { --x: 43%; --dx: -14px; --dy: -68px; --size: 9px;  --delay: 1.09s; }
+    .splash-sparks i:nth-child(6)  { --x: 50%; --dx: 0px;   --dy: -84px; --size: 13px; --delay: 1.08s; }
+    .splash-sparks i:nth-child(7)  { --x: 57%; --dx: 18px;  --dy: -64px; --size: 8px;  --delay: 1.11s; }
+    .splash-sparks i:nth-child(8)  { --x: 64%; --dx: 34px;  --dy: -40px; --size: 11px; --delay: 1.09s; }
+    .splash-sparks i:nth-child(9)  { --x: 71%; --dx: 54px;  --dy: -72px; --size: 7px;  --delay: 1.10s; }
+    .splash-sparks i:nth-child(10) { --x: 77%; --dx: 80px;  --dy: -50px; --size: 12px; --delay: 1.07s; }
+    .splash-sparks i:nth-child(11) { --x: 83%; --dx: 52px;  --dy: -24px; --size: 8px;  --delay: 1.12s; }
+    .splash-sparks i:nth-child(12) { --x: 50%; --dx: 0px;   --dy: -36px; --size: 6px;  --delay: 1.05s; }
     @keyframes plaqueSlam {
       0% { opacity: 0; transform: translate(-50%, -50%) translateY(-58px) rotate(-8deg) scale(1.42); filter: blur(2px); }
       54% { opacity: 1; transform: translate(-50%, -50%) rotate(-2deg) scale(.9); filter: blur(0); }
       70% { opacity: 1; transform: translate(-50%, -50%) translateY(-5px) rotate(-2deg) scale(1.055); }
       84% { opacity: 1; transform: translate(-50%, -50%) rotate(-2deg) scale(.985); }
       100% { opacity: 1; transform: translate(-50%, -50%) rotate(-2deg) scale(1); }
+    }
+    @keyframes sparkBurst {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, 0) scale(.3);
+      }
+      12% {
+        opacity: 1;
+        transform: translate(-50%, -4px) scale(1);
+      }
+      58% {
+        opacity: 1;
+        transform: translate(calc(-50% + var(--dx)), var(--dy)) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--dx) * 1.12), calc(var(--dy) + 10px)) scale(.55);
+      }
     }
 
     .app-shell { height: 100%; display: grid; grid-template-rows: var(--header-h) 1fr; }
@@ -1133,6 +1191,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       .splash-title { opacity: 1; transform: translate(-50%, -50%); }
       .splash-logo { animation: none; }
       .splash-plaque { opacity: 1; transform: translate(-50%, -50%) rotate(-2deg); }
+      .splash-sparks { display: none; }
     }
   </style>
 </head>
@@ -1143,6 +1202,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
     <div class="splash-logo">
       <h1 class="splash-title">千里浜まつり</h1>
       <div class="splash-plaque" aria-label="デジタルマップ"><span>デジタルマップ</span></div>
+      <div class="splash-sparks" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i>
+        <i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
     </div>
   </div>
 
@@ -1174,11 +1237,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <h2 id="infoTitle">千里浜まつりデジタルマップについて</h2>
       <p>キリコ、獅子舞、神輿、山車の現在地を、GPS情報をもとに地図上へ表示します。見たいマーカーを押すと、紹介文や写真、最終更新時刻を確認できます。</p>
       <ul>
-        <li>右上の更新ボタンから、最新の位置情報を手動で取得できます。</li>
+        <li>位置情報は約5分ごとに自動更新されます。右上の更新ボタンから手動で再読み込みすることもできます。</li>
         <li>地図は指で移動・拡大・縮小できます。</li>
         <li>マーカー内の「Googleマップで経路を開く」から、現在地までの経路を確認できます。</li>
       </ul>
-      <div class="modal-note">GPSや通信の状況により、実際の位置や更新時刻と差が生じる場合があります。安全な場所に立ち止まってご利用ください。</div>
+      <div class="modal-note">位置情報は約5分ごとに取得・更新しています。GPSや通信状況、更新のタイミングにより、表示位置が実際の現在地より遅れる場合があります。安全な場所に立ち止まってご利用ください。</div>
       <div class="credits">
         <strong>協力</strong><br>
         Evolink合同会社<br>
@@ -1202,23 +1265,20 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <script>
     /* =========================================================
      * 千里浜まつりデジタルマップ 設定
-     * 本番公開前は、基本的にこの CONFIG だけを編集します。
+     * 現在地はGoogleスプレッドシートのCurrentLocationシートから取得します。
      * ========================================================= */
     const CONFIG = {
       // true: 全マーカーを会場付近に固定 / false: APIの実位置を表示
       DEMO_MODE: false,
 
-      API_URL: "https://cms.ohwatcha.evolinq.link/items/current",
-
-      // GitHub PagesなどからAPIへ直接接続できない場合に、CORS対応済みの
-      // 自前プロキシURLを指定します。末尾へAPI_URLをURLエンコードして付与します。
-      // 例: "https://example.workers.dev/?url="
-      API_PROXY_PREFIX: "",
+      // Googleスプレッドシート CurrentLocation シートから現在地を取得
+      SPREADSHEET_ID: "1H36aOfWSgCsfEPPODjRSDR5vZANybrm2JB8EzffLEA8",
+      SHEET_NAME: "CurrentLocation",
 
       MAP_CENTER: [36.894469, 136.773445],
       MAP_ZOOM: 15,
-      REFRESH_INTERVAL_MS: 60000,
-      OFFLINE_MINUTES: 5,
+      REFRESH_INTERVAL_MS: 300000,
+      OFFLINE_MINUTES: 15,
 
       // apiId を実際に表示する6台のIDへ差し替えてください。
       // icon / photo は指定どおり ./images/ 以下を参照します。
@@ -1385,20 +1445,90 @@ svg.leaflet-image-layer.leaflet-interactive path {
       }));
     }
 
-    function apiRequestUrl() {
-      const cacheBuster = `${CONFIG.API_URL.includes("?") ? "&" : "?"}_=${Date.now()}`;
-      const target = CONFIG.API_URL + cacheBuster;
-      return CONFIG.API_PROXY_PREFIX ? CONFIG.API_PROXY_PREFIX + encodeURIComponent(target) : target;
-    }
+    /**
+     * Google Visualization API(JSONP)でCurrentLocationを取得する。
+     * fetch()を使わず<script>として読み込むため、GitHub Pagesからでも
+     * Google SheetsのCORS制約を受けにくい方式。
+     */
+    function fetchLivePoints() {
+      return new Promise((resolve, reject) => {
+        const callbackName = `handleCurrentLocation_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+        const script = document.createElement("script");
+        const timeoutMs = 15000;
 
-    async function fetchLivePoints() {
-      const response = await fetch(apiRequestUrl(), { method: "GET", cache: "no-store" });
-      if (!response.ok) throw new Error(`API ${response.status}`);
-      const json = await response.json();
-      const rows = Array.isArray(json) ? json : json.data;
-      if (!Array.isArray(rows)) throw new Error("API形式が想定と異なります");
-      const wanted = new Set(CONFIG.TRACKERS.map(item => String(item.apiId)));
-      return rows.filter(row => wanted.has(String(row.id)) && Number.isFinite(Number(row.lat)) && Number.isFinite(Number(row.lon)));
+        const cleanup = () => {
+          clearTimeout(timer);
+          delete window[callbackName];
+          script.remove();
+        };
+
+        const timer = setTimeout(() => {
+          cleanup();
+          reject(new Error("Googleスプレッドシートの読み込みがタイムアウトしました"));
+        }, timeoutMs);
+
+        window[callbackName] = payload => {
+          try {
+            if (!payload || payload.status === "error" || !payload.table) {
+              const message = payload?.errors?.[0]?.detailed_message
+                || payload?.errors?.[0]?.message
+                || "Googleスプレッドシートの取得に失敗しました";
+              throw new Error(message);
+            }
+
+            const cols = payload.table.cols || [];
+            const headers = cols.map((col, index) => {
+              const label = String(col.label || col.id || "").trim();
+              return label || `col${index}`;
+            });
+
+            const rows = (payload.table.rows || []).map(row => {
+              const obj = {};
+              (row.c || []).forEach((cell, index) => {
+                const key = headers[index];
+                if (!key) return;
+                if (!cell) {
+                  obj[key] = "";
+                  return;
+                }
+                // 日付セル等は表示文字列(f)を優先し、それ以外は生値(v)を利用。
+                obj[key] = cell.f !== undefined && cell.f !== null ? cell.f : cell.v;
+              });
+              return obj;
+            });
+
+            const wanted = new Set(CONFIG.TRACKERS.map(item => String(item.apiId)));
+
+            const points = rows.filter(row =>
+              wanted.has(String(row.id)) &&
+              Number.isFinite(Number(row.lat)) &&
+              Number.isFinite(Number(row.lon))
+            );
+
+            cleanup();
+            resolve(points);
+          } catch (error) {
+            cleanup();
+            reject(error);
+          }
+        };
+
+        const params = new URLSearchParams({
+          tqx: `responseHandler:${callbackName}`,
+          sheet: CONFIG.SHEET_NAME,
+          _: String(Date.now())
+        });
+
+        script.src =
+          `https://docs.google.com/spreadsheets/d/${CONFIG.SPREADSHEET_ID}/gviz/tq?${params.toString()}`;
+        script.async = true;
+        script.onerror = () => {
+          cleanup();
+          reject(new Error("Googleスプレッドシートへの接続に失敗しました"));
+        };
+
+        document.head.appendChild(script);
+      });
     }
 
     function renderMarkers(points) {
