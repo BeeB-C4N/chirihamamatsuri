@@ -819,9 +819,17 @@ svg.leaflet-image-layer.leaflet-interactive path {
       justify-content: center;
       padding: 14px clamp(20px, 6vw, 34px);
       border: 1px solid rgba(112, 72, 34, .34);
-      color: #fff;
+      color: #23170f;
       background:
-        linear-gradient(90deg, rgba(255,255,255,.26) 0 2%, transparent 2% 12%, rgba(145,97,51,.12) 12% 14%, transparent 14% 28%, rgba(255,255,255,.18) 28% 30%, transparent 30% 53%, rgba(145,97,51,.10) 53% 56%, transparent 56% 70%, rgba(255,255,255,.15) 70% 72%, transparent 72% 100%),
+        repeating-linear-gradient(180deg,
+          rgba(255,255,255,.22) 0px,
+          rgba(255,255,255,.22) 2px,
+          rgba(151,104,58,.12) 2px,
+          rgba(151,104,58,.12) 4px,
+          rgba(255,255,255,.08) 4px,
+          rgba(255,255,255,.08) 7px,
+          transparent 7px,
+          transparent 12px),
         linear-gradient(180deg, #f4d29c 0%, #e9bd82 48%, #dda764 100%);
       font-family: var(--font-mincho) !important;
       line-height: 1;
@@ -856,11 +864,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
       border-bottom: 2px solid rgba(115, 72, 38, .92);
     }
     .splash-plaque span {
-      color: #c53224;
+      color: #1f1711;
       font-size: clamp(1.35rem, 5vw, 2.25rem);
       font-weight: 800;
       letter-spacing: .08em;
-      text-shadow: 0 1px 0 rgba(255, 249, 240, .65), 0 2px 8px rgba(136, 29, 18, .16);
+      text-shadow: 0 1px 0 rgba(255, 249, 240, .65), 0 2px 8px rgba(70, 42, 22, .14);
       white-space: nowrap;
     }
     .splash-sparks {
@@ -943,16 +951,94 @@ svg.leaflet-image-layer.leaflet-interactive path {
     }
     .brand {
       min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
       font-family: var(--font-mincho) !important;
-      font-size: clamp(.92rem, 3.9vw, 1.23rem);
+    }
+    .brand-title {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: #fffdf4;
+      font-size: clamp(.96rem, 4vw, 1.28rem);
       font-weight: 700;
       letter-spacing: .015em;
-      text-shadow: 0 0 10px rgba(216, 154, 74, .42);
+      text-shadow:
+        0 0 6px rgba(255, 248, 223, .9),
+        0 0 18px rgba(216, 154, 74, .62),
+        0 0 28px rgba(216, 154, 74, .34);
+      animation: brandSparkle 3.2s ease-in-out infinite;
     }
-    .brand span { color: var(--gold-light); }
+    .brand-plaque {
+      position: relative;
+      flex: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 32px;
+      padding: 6px 14px 7px;
+      border: 1px solid rgba(112, 72, 34, .36);
+      border-radius: 3px;
+      color: #1f1711;
+      font-size: clamp(.74rem, 3vw, .92rem);
+      font-weight: 800;
+      letter-spacing: .08em;
+      background:
+        repeating-linear-gradient(180deg,
+          rgba(255,255,255,.22) 0px,
+          rgba(255,255,255,.22) 2px,
+          rgba(151,104,58,.12) 2px,
+          rgba(151,104,58,.12) 4px,
+          rgba(255,255,255,.08) 4px,
+          rgba(255,255,255,.08) 7px,
+          transparent 7px,
+          transparent 12px),
+        linear-gradient(180deg, #f4d29c 0%, #e9bd82 48%, #dda764 100%);
+      box-shadow:
+        4px 4px 0 #6c4527,
+        0 8px 18px rgba(47, 27, 12, .24),
+        inset 0 1px 0 rgba(255,255,255,.34),
+        inset 0 -2px 0 rgba(132, 84, 45, .18);
+      text-shadow: 0 1px 0 rgba(255, 249, 240, .65), 0 2px 8px rgba(70, 42, 22, .14);
+    }
+    .brand-plaque::before,
+    .brand-plaque::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      pointer-events: none;
+    }
+    .brand-plaque::before {
+      left: -4px;
+      top: -4px;
+      border-left: 2px solid rgba(255, 249, 235, .88);
+      border-top: 2px solid rgba(255, 249, 235, .88);
+    }
+    .brand-plaque::after {
+      right: -4px;
+      bottom: -4px;
+      border-right: 2px solid rgba(115, 72, 38, .9);
+      border-bottom: 2px solid rgba(115, 72, 38, .9);
+    }
+    @keyframes brandSparkle {
+      0%, 100% {
+        text-shadow:
+          0 0 6px rgba(255, 248, 223, .88),
+          0 0 18px rgba(216, 154, 74, .56),
+          0 0 28px rgba(216, 154, 74, .28);
+      }
+      50% {
+        text-shadow:
+          0 0 8px rgba(255, 248, 223, .98),
+          0 0 24px rgba(216, 154, 74, .78),
+          0 0 34px rgba(216, 154, 74, .38);
+      }
+    }
     .header-actions { display: flex; align-items: center; gap: 7px; flex: none; }
     .icon-btn {
       width: 40px;
@@ -1039,21 +1125,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
       place-items: center;
       border: 3px solid #fff;
       border-radius: 50%;
-      background: linear-gradient(145deg, #4a2d1c, #1b100b);
-      box-shadow: 0 5px 13px rgba(0, 0, 0, .42), 0 0 0 3px var(--pin-color, var(--gold));
-    }
-    .festival-pin::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      bottom: -9px;
-      width: 15px;
-      height: 15px;
-      background: #fff;
-      border-right: 3px solid var(--pin-color, var(--gold));
-      border-bottom: 3px solid var(--pin-color, var(--gold));
-      transform: translateX(-50%) rotate(45deg);
-      z-index: -1;
+      background: linear-gradient(145deg, #746a65, #534a45);
+      box-shadow: 0 5px 13px rgba(0, 0, 0, .34), 0 0 0 3px var(--pin-color, #7a6258);
     }
     .festival-pin img { width: 48px; height: 48px; object-fit: contain; border-radius: 50%; }
     .festival-pin .pin-fallback { color: #fff; font-size: 1rem; font-weight: 900; }
@@ -1177,7 +1250,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
     @media (max-width: 520px) {
       :root { --header-h: 56px; }
       .topbar { padding-left: 11px; padding-right: 8px; }
-      .brand { max-width: calc(100vw - 104px); }
+      .brand { max-width: calc(100vw - 104px); gap: 8px; }
+      .brand-title { max-width: clamp(110px, 36vw, 170px); }
+      .brand-plaque { padding: 5px 10px 6px; font-size: .72rem; letter-spacing: .06em; }
       .icon-btn { width: 39px; height: 39px; }
       .leaflet-control-zoom { margin-top: 58px !important; }
       .mode-notice { top: 10px; max-width: calc(100% - 32px); }
@@ -1192,6 +1267,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       .splash-logo { animation: none; }
       .splash-plaque { opacity: 1; transform: translate(-50%, -50%) rotate(-2deg); }
       .splash-sparks { display: none; }
+      .brand-title { animation: none; }
     }
   </style>
 </head>
@@ -1211,7 +1287,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
   <main class="app-shell">
     <header class="topbar">
-      <div class="brand"><span>千里浜まつり</span> デジタルマップ</div>
+      <div class="brand"><span class="brand-title">千里浜まつり</span><span class="brand-plaque">デジタルマップ</span></div>
       <div class="header-actions">
         <button class="icon-btn" id="refreshBtn" type="button" aria-label="位置情報を更新" title="位置情報を更新">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6v5h-5"></path><path d="M18.2 15a7 7 0 1 1-.8-7.7L20 10"></path></svg>
@@ -1390,7 +1466,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <span class="pin-fallback">${fallback}</span>
           <img src="${escapeHtml(tracker.icon)}" alt="" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'">
         </div>`;
-      return L.divIcon({ className: "", html, iconSize: [58, 68], iconAnchor: [29, 63], popupAnchor: [0, -57] });
+      return L.divIcon({ className: "", html, iconSize: [58, 58], iconAnchor: [29, 29], popupAnchor: [0, -34] });
     }
 
     function popupHtml(tracker, point) {
