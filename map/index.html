@@ -952,19 +952,19 @@ svg.leaflet-image-layer.leaflet-interactive path {
     .brand {
       min-width: 0;
       display: flex;
-      align-items: center;
-      gap: 10px;
+      align-items: baseline;
+      gap: 12px;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
       font-family: var(--font-mincho) !important;
     }
-    .brand-title {
+    .brand-title,
+    .brand-subtitle {
       min-width: 0;
       overflow: hidden;
       text-overflow: ellipsis;
       color: #fffdf4;
-      font-size: clamp(.96rem, 4vw, 1.28rem);
       font-weight: 700;
       letter-spacing: .015em;
       text-shadow:
@@ -973,57 +973,12 @@ svg.leaflet-image-layer.leaflet-interactive path {
         0 0 28px rgba(216, 154, 74, .34);
       animation: brandSparkle 3.2s ease-in-out infinite;
     }
-    .brand-plaque {
-      position: relative;
-      flex: none;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 32px;
-      padding: 6px 14px 7px;
-      border: 1px solid rgba(112, 72, 34, .36);
-      border-radius: 3px;
-      color: #1f1711;
-      font-size: clamp(.74rem, 3vw, .92rem);
-      font-weight: 800;
-      letter-spacing: .08em;
-      background:
-        repeating-linear-gradient(180deg,
-          rgba(255,255,255,.22) 0px,
-          rgba(255,255,255,.22) 2px,
-          rgba(151,104,58,.12) 2px,
-          rgba(151,104,58,.12) 4px,
-          rgba(255,255,255,.08) 4px,
-          rgba(255,255,255,.08) 7px,
-          transparent 7px,
-          transparent 12px),
-        linear-gradient(180deg, #f4d29c 0%, #e9bd82 48%, #dda764 100%);
-      box-shadow:
-        4px 4px 0 #6c4527,
-        0 8px 18px rgba(47, 27, 12, .24),
-        inset 0 1px 0 rgba(255,255,255,.34),
-        inset 0 -2px 0 rgba(132, 84, 45, .18);
-      text-shadow: 0 1px 0 rgba(255, 249, 240, .65), 0 2px 8px rgba(70, 42, 22, .14);
+    .brand-title {
+      font-size: clamp(.96rem, 4vw, 1.28rem);
     }
-    .brand-plaque::before,
-    .brand-plaque::after {
-      content: "";
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      pointer-events: none;
-    }
-    .brand-plaque::before {
-      left: -4px;
-      top: -4px;
-      border-left: 2px solid rgba(255, 249, 235, .88);
-      border-top: 2px solid rgba(255, 249, 235, .88);
-    }
-    .brand-plaque::after {
-      right: -4px;
-      bottom: -4px;
-      border-right: 2px solid rgba(115, 72, 38, .9);
-      border-bottom: 2px solid rgba(115, 72, 38, .9);
+    .brand-subtitle {
+      font-size: clamp(.86rem, 3.5vw, 1.1rem);
+      animation-delay: .18s;
     }
     @keyframes brandSparkle {
       0%, 100% {
@@ -1252,7 +1207,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       .topbar { padding-left: 11px; padding-right: 8px; }
       .brand { max-width: calc(100vw - 104px); gap: 8px; }
       .brand-title { max-width: clamp(110px, 36vw, 170px); }
-      .brand-plaque { padding: 5px 10px 6px; font-size: .72rem; letter-spacing: .06em; }
+      .brand-subtitle { max-width: clamp(92px, 30vw, 150px); font-size: .78rem; }
       .icon-btn { width: 39px; height: 39px; }
       .leaflet-control-zoom { margin-top: 58px !important; }
       .mode-notice { top: 10px; max-width: calc(100% - 32px); }
@@ -1287,7 +1242,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
   <main class="app-shell">
     <header class="topbar">
-      <div class="brand"><span class="brand-title">千里浜まつり</span><span class="brand-plaque">デジタルマップ</span></div>
+      <div class="brand"><span class="brand-title">千里浜まつり</span><span class="brand-subtitle">デジタルマップ</span></div>
       <div class="header-actions">
         <button class="icon-btn" id="refreshBtn" type="button" aria-label="位置情報を更新" title="位置情報を更新">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6v5h-5"></path><path d="M18.2 15a7 7 0 1 1-.8-7.7L20 10"></path></svg>
