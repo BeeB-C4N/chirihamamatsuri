@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#1b100b">
-  <meta name="description" content="千里浜神社秋季例大祭　千里浜まつりの山車、神輿、子獅子、中獅子、奉燈、なぎさ祭太鼓の現在地を確認できるデジタルマップです。">
+  <meta name="description" content="千里浜まつりの山車、神輿、子獅子、中獅子、奉燈、なぎさ祭太鼓の現在地を確認できるデジタルマップです。">
   <title>千里浜まつりデジタルマップ</title>
 
   <style id="leaflet-core-css">
@@ -797,15 +797,15 @@ svg.leaflet-image-layer.leaflet-interactive path {
       width: min(92vw, 760px);
       margin: 0;
       display: flex;
-      flex-direction: column;
+      flex-direction: row-reverse;
       align-items: center;
       justify-content: center;
-      gap: clamp(7px, 1.4vh, 14px);
+      gap: clamp(10px, 2.8vw, 24px);
       color: #fff;
       font-family: var(--font-mincho) !important;
-      font-size: clamp(1.65rem, 7vw, 3.7rem);
+      font-size: clamp(1.55rem, 5.4vw, 3.2rem);
       font-weight: 700;
-      line-height: 1.15;
+      line-height: 1.05;
       letter-spacing: .04em;
       text-align: center;
       white-space: nowrap;
@@ -820,6 +820,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
     .splash-title span {
       display: block;
       font: inherit;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      white-space: nowrap;
     }
     @keyframes titleFade {
       to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
